@@ -4,7 +4,7 @@ from flask_mail import Mail,Message
 app=Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'abc'
 mysql=MySQL(app)
 
@@ -28,11 +28,44 @@ def send_mail(reciver,passw):
     mail.send(msg)
     flash('password sent succesfully please log in')
     return
+#session['hostel']='HALL OF RESIDENCE'
+@app.before_first_request
+def init_app():
+    session['hostelname'] = 'HALL OF RESIDENCE'
+
 
 @app.route('/')
 def home():
-    return render_template('layout.html')
+    return render_template('home.html')
     #return redirect(url_for('login'))
+@app.route('/apj')
+def apj():
+    session['hostelname']='A. P. J ABDUL KALAM HALL OF RESIDENCE'
+    return redirect(url_for('home'))
+@app.route('/vsb')
+def vsb():
+    session['hostelname']='VIKRAM SARABHAI HALL OF RESIDENCE'
+    return redirect(url_for('home'))
+
+@app.route('/cvr')
+def cvr():
+    session['hostelname']='C. V. RAMAN HALL OF RESIDENCE'
+    return redirect(url_for('home'))
+
+@app.route('/devi')
+def devi():
+    session['hostelname']='DEVI AHILYA HALL OF RESIDENCE'
+    return redirect(url_for('home'))
+
+@app.route('/homi')
+def homi():
+    session['hostelname']='HOMI JEHANGIR BHABHA HALL OF RESIDENCE'
+    return redirect(url_for('home'))
+
+@app.route('/jcb')
+def jcb():
+    session['hostelname']='J. C. BOSE HALL OF RESIDENCE'
+    return redirect(url_for('home'))
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -46,7 +79,7 @@ def login():
         #print(x)
         if (x!=0):
             data=cur1.fetchone()
-            print(data)
+            #print(data)
             if(data[3]==password):
                 session['logged_in']=True
                 return redirect(url_for('home'))
