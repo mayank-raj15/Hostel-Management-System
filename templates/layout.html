@@ -2,15 +2,9 @@
 <html lang="en">
 <head>
 
-<title>IIT INDORE</title>
+<title>{{session.hostelname}} | IIT INDORE</title>
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/iitilogo.png') }}"></link>
 
-<!--
-
-Template 2099 Scenic
-
-http://www.tooplate.com/view/2099-scenic
-
--->
 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -29,11 +23,16 @@ http://www.tooplate.com/view/2099-scenic
 
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/owl.theme.css') }}"/>
 
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/owl-carousel.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/owl.carousel.css')}}"/>
+
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/footer1.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/footer2.css') }}"/>
 
 
 <!-- MAIN CSS -->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/tooplate-style.css') }}"/>
+
 
 
 </head>
@@ -66,13 +65,13 @@ http://www.tooplate.com/view/2099-scenic
               
           </div>
 
-          <!-- MENU LINKS -->
+          <!-- MENU LINKS   -->
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#home" class="smoothScroll">Home</a></li>
-                    <li><a href="#about" class="smoothScroll">COMPLAINT</a></li>
-                    <li><a href="#team" class="smoothScroll">SUGGESTION</a></li>  
-                    <li><a href="#contact" class="smoothScroll">PROFILE</a></li>
+                    <li><a href="{{ url_for('home') }}" class="smoothScroll">Home</a></li>
+                    <li><a href="{{ url_for('complaints') }}" class="smoothScroll">COMPLAINT</a></li>
+                    <li><a href="{{ url_for('suggetions') }}" class="smoothScroll">SUGGESTION</a></li>  
+                    <li><a href="{{ url_for('profile') }}" class="smoothScroll">PROFILE</a></li>
                     <li>
                          {% if not session.logged_in %}
                         <a href="{{ url_for('login') }}">log in</a>
@@ -95,8 +94,9 @@ http://www.tooplate.com/view/2099-scenic
 
                <div class="col-md-8 col-sm-12">
                     <div class="home-text">
-                         <h1>WELCOME TO IIT INDORE</h1>
-                         <p>{{session['hostelname']}}</p>
+                         <h1 style="color: white">{{session['hostelname']}}</h1>
+
+                         <p>HALL OF RESIDENCE</p>
                          <ul class="section-btn">
                               <a href="#about" class="smoothScroll"><span data-hover="Discover More">Discover More</span></a>
                          </ul>
@@ -123,7 +123,12 @@ http://www.tooplate.com/view/2099-scenic
                          <h1>भारतीय प्रौद्योगिकी संस्थान इंदौर <br>
                           Indian Institute of Technology Indore <br></h1>
                           <hr>
-                         <h1 style="color:red;font-weight: bold;">{{session['hostelname']}}</h1><hr>
+                          {% if session.show %}
+                        <h1 style="color:red;font-weight: bold;">HALL OF RESIDENCE</h1><hr>
+                          {% else %}
+                         <h1 style="color:red;font-weight: bold;">{{session['hostelname']}} HALL OF RESIDENCE</h1><hr>
+                          {% endif %}
+                         
                     </div>
                </div>
 
@@ -135,6 +140,39 @@ http://www.tooplate.com/view/2099-scenic
 {% block body %}{% endblock %}
 
 <!-- FOOTER -->
+
+<footer style="background-color: black;">
+            <div class="row">
+                <div class="col span-1-of-3">
+                    <ul class="footer-nav-left">
+                        <li>Contact: &nbsp;0731-2438700, Ext. 829</li>
+                        <a href="mailto:hostel@iiti.ac.in"><li>E-mail: &nbsp;hostel@iiti.ac.in</li></a>
+                        <li>Web: &nbsp; <a href="http://hostel.iiti.ac.in/" target="_blank">hostel.iiti.ac.in</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col span-1-of-3">
+                    <ul class="footer-nav-center">
+                        <li><a href="http://iiti.ac.in/" target="_blank"> IIT Indore Official Site</a></li>
+                        <li><a href="https://gymkhana-2a704.firebaseapp.com/" target="_blank"> Gymkhana IIT Indore</a></li>
+                    </ul>
+                </div>
+               
+                
+                <div class="col span-1-of-3">
+                    <ul class="footer-nav-right">
+                        <li>Security Supervisor:&nbsp; +91-6265224771</li>
+                        <li>Ambulance: &nbsp; 7509062832</li>
+                        <li>Medical: &nbsp; 0731-2438700, Ext. 987, 776</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <p>
+                    Copyright &copy; IIT Indore. All rights reserved.
+                </p>
+            </div>
+</footer>
 
 <!-- SCRIPTS -->
 
@@ -148,9 +186,5 @@ http://www.tooplate.com/view/2099-scenic
 <script src="{{url_for('static',filename='js/smoothscroll.js')}}"></script>
 <script src="{{url_for('static',filename='js/custom.js')}}"></script>
 
-
 </body>
-
-{% extends 'footer.html' %}
-
 </html>

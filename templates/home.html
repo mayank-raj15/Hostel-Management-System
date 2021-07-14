@@ -1,11 +1,6 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-
-<!-- ABOUT -->
-
-
-
 <!-- PROJECT -->
 <section id="project" class="parallax-section">
      <div class="container">
@@ -105,10 +100,55 @@
                               </div>
                          </a>
                     </div>
-               </div>               
+               </div> 
+                             
 
           </div>
      </div>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-4">
+      <h4 style="font-weight: 1000">Notification</h4>
+      <div class="panel panel-default" style="border-width: 1px; border-style: solid; margin-bottom: 10px; overflow-y: scroll; height: 200px; border-color: #b6b6b3">
+        <ul style="padding-left: 20px;">
+          {%for item in items%}
+          <li><a href="{{item[2]}}" target="_blank">{{item[1]}}</a>
+          </li>
+          {%endfor%}
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h4 style="font-weight: 1000">Undertakings</h4>
+      <div class="panel panel-default" style="border-width: 1px; border-style: solid; margin-bottom: 10px; overflow-y: scroll; height: 200px; border-color: #b6b6b3">
+        <ul style="padding-left: 20px;">
+          <a href="/static/docs/undertakings/Safety & Security Rules edited AG.pdf" target="_blank"><li>Safety and Security Rules</li></a>
+          <a href="/static/docs/undertakings/Anti ragging undertaking.pdf" target="_blank"><li>Anti-ragging and Anti-harassment</li></a>
+          <a href="/static/docs/undertakings/Dining Rules undertaking.pdf" target="_blank"><li>Dining Rules and Regulations</li></a>
+          <a href="/static/docs/undertakings/Internet usage undertaking.pdf" target="_blank"><li>Policy for Internet Access and Email Usage</li></a>
+          <a href="/static/docs/undertakings/Hostel_Rules.pdf" target="_blank"><li>Hall Rules</li></a>
+
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h4 style="font-weight: 1000">Events</h4>
+      <div class="panel panel-default" style="border-width: 1px; border-style: solid; margin-bottom: 10px; overflow-y: scroll; height: 200px; border-color: #b6b6b3">
+        <ul style="padding-left: 20px;">
+          {%for item in items1%}
+          <a href="{{url_for('showimg',eid=item[0])}}" target="_blank"><li>{{item[1]}}</li></a>
+          {%endfor%}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
 </section>
+
 
 {% endblock %}
