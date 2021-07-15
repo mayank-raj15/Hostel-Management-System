@@ -5,20 +5,22 @@ It is website that will allow the students to interact with the hostel staff onl
 
 ## Requirements
 
-MySQL Command Client Server should be installed and running on the PC
+Python3, Flask and other packages mentioned in tut2.py file, MySQL Command Client Server should be installed and running on the PC
 
 ## Usage
 
 1. First of all, run all the queries in the file 'main.db' in your MySQL server. This will create some dummy staff and all the admins required to run the site. 
-Usernames and Passwords of admins are given below:
-	Main admin - admin , admin123
-	Admin VSB - admin_vsb , admin123
-	Admin APJ - admin_apj , admin123
-	Admin DA  - admin_da  , admin123
-	Admin HJB - admin_hjb , admin123
-	Admin CVR - admin_cvr , admin123
-	Admin JCB - admin_jcb , admin123
-These password are just for the demo purpose and can be changed from the server side.
+Usernames and Passwords of admins are given below:  
+
+	1. Main admin - admin , admin123
+	2. Admin VSB - admin_vsb , admin123
+	3. Admin APJ - admin_apj , admin123
+	4. Admin DA  - admin_da  , admin123
+	5. Admin HJB - admin_hjb , admin123
+	6. Admin CVR - admin_cvr , admin123
+	7. Admin JCB - admin_jcb , admin123  
+	
+These password are just for the demo purpose and can be changed from the server side.  
 
 2. Replace the database server password with the password that's set on your pc.
 
